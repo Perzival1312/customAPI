@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   createdAt: { type: Date },
   updatedAt: { type: Date },
-  name: {type: string, trim: true, required: true},
-  email: { type: string, uniquie: true, lowercase: true, trim: true, requires: true},
-  password: {type: string, required: true, select: false}
+  name: {type: String, trim: true, required: true},
+  email: { type: String, uniquie: true, lowercase: true, trim: true, requires: true},
+  password: {type: String, required: true, select: false}
 });
 
 // Must use function here! ES6 => functions do not bind this!
