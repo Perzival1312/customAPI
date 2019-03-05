@@ -1,0 +1,15 @@
+admin section with specific api key to create and add to whitelist
+
+public doesnt exist
+
+verified:
+    have a key that was made and added to whitelist
+    things that can be done:
+        Get
+        Post
+
+definition api
+https://rapidapi.com/community/api/urban-dictionary
+
+posts def to 
+http://urbandictionary.com/add.submit.php?definition[word]=thing&definition[meaning]=thing&definition[example]=that%20thing%20is%20cool&definition[language]=en
