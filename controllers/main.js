@@ -13,7 +13,7 @@ const allUsers = () => {
 }
 // CREATE / SIGNUP
 /** Sign up users/ register them */
-const signupUser = () => {
+const signupUser = (req, res) => {
     User.create(req.body)
 }
 
@@ -25,23 +25,23 @@ const signupUser = () => {
 
 // READ
 /** Get an individual user */
-const getUser = () => {
+const getUser = (req, res) => {
     res.json(User.findById(req.params.id))
 }
 // UPDATE
 /** When a user wants to update their profile */
-const updateUser = () => {
+const updateUser = (req, res) => {
 
 }
 // DELETE
 /** When a user wants to delete their profile */
-const deleteUser = () => {
+const deleteUser = (req, res) => {
     User.findByIdAndDelete(req.params.id)
 }
 
 module.exports = {
 
-    
+
     allUsers,
     signupUser,
     getUser,
