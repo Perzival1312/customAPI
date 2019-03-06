@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const User = require('../models/User')
 const Messages = {
     "success": "It was a success!",
@@ -7,34 +6,45 @@ const Messages = {
     "unauthenticated": "You are not Authenticated",
 }
 
-// router.get('/api/v1', (req, res) => {
-//     data = {
-//         "name":"John",
-//         "age":30,
-//         "cars": {
-//           "car1":"Ford",
-//           "car2":"BMW",
-//           "car3":"Fiat"
-//         }
-//        }
-//     res.json(data)
-// })
+// INDEX - ALL
+/** show all users */
+const allUsers = () => {
 
-// Admin only
-router.post('/api/v1/sign-up/', (req, res) => {
-  const newUser = new User(req.body);
-  newUser.save().then(user => {
-    res.json(Messages.success)
-  });
-});
+}
+// CREATE / SIGNUP
+/** Sign up users/ register them */
+const signupUser = () => {
 
-// Admin only
-router.get('/index', (req, res) => {
-    User.find({}).then((users) => {
-        res.json(users)
-    })
-})
+}
+
+// LOGIN
+/** have users login <- don't worry about this */
+
+//LOGOUT
+/** have users logout <- don't worry about this */
+
+// READ
+/** Get an individual user */
+const getUser = () => {
+
+}
+// UPDATE
+/** When a user wants to update their profile */
+const updateUser = () => {
+
+}
+// DELETE
+/** When a user wants to delete their profile */
+const deleteUser = () => {
+
+}
 
 
 
-module.exports = router
+module.exports = {
+    allUsers,
+    signupUser,
+    getUser,
+    updateUser,
+    deleteUser
+}

@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,8 +11,8 @@ require('./database/mongooseConnection');
 require('dotenv').config();
 
 // BODY-PARSER
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(validator());
 // override with POST having ?_method=DELETE & ?_method=PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
@@ -27,7 +26,7 @@ app.use(methodOverride((req, res) => {
 }));
 
 // Call in the ROUTES
-const mainController = require('./controllers/main');
+const mainController = require('./routes/profileRoutes');
 app.use(mainController);
 // const authController = require('./controllers/auth')
 // app.use(authController)
