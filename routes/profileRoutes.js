@@ -12,6 +12,10 @@ const {auth} = require('../auth_middleware/auth');
 const express = require('express');
 const router = express.Router();
 
+router.get('/', (req, res)=> {
+  res.json({message: "Welcome!"})
+})
+
 router.route('/api/v1/users')
     .get(allUsers)
     .post(signupUser)
