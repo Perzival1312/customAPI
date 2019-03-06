@@ -6,7 +6,9 @@ const {
     deleteUser
 } = require('../controllers/main');
 
-const router = express().Router();
+const express = require('express');
+const router = express.Router();
+
 router.route('/api/v1/users')
     .get(allUsers)
     .post(signupUser)

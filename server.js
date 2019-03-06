@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const methodOverride = require('method-override');
@@ -28,8 +29,6 @@ app.use(methodOverride((req, res) => {
 // Call in the ROUTES
 const mainController = require('./routes/profileRoutes');
 app.use(mainController);
-// const authController = require('./controllers/auth')
-// app.use(authController)
 
 app.listen(port, () => {
   console.log(`Port is listening on ${port}`)
