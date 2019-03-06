@@ -5,19 +5,21 @@ const {
     signupUser,
     getUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    search
 } = require('../controllers/main');
 const {auth} = require('../auth_middleware/auth');
 const express = require('express');
 const router = express.Router();
 
 router.route('/api/v1/users')
-    .get(auth, allUsers)
+    .get(allUsers)
     .post(signupUser)
 
 
 router.post('/api/v1/users/login', loginUser);
 router.get('/api/v1/users/logout', auth,logoutUser);
+router.get('/search', search);
 
 router.route('/api/v1/users/:id')
     .get(auth, getUser)

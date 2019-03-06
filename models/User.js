@@ -5,8 +5,13 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   name:       {type: String, trim: true, required: true},
   email:      { type: String, uniquie: true, trim: true, required: true},
-  password:   {type: String, required: true, select: false}
+  password:   {type: String, required: true, select: false},
+  language: {type: String, required: true}
 }, { timestamps: true });
+
+// Users can be developers or just users
+// if user is not dev they can search for user that is dev if they have the same skill
+
 
 // Must use function here! ES6 => functions do not bind this!
 UserSchema.pre("save", function(next) {
@@ -29,5 +34,5 @@ UserSchema.methods.comparePassword = function(password, done) {
     done(err, isMatch);
   });
 };
-
+UserSchema.index({fields: 'text'});
 module.exports = mongoose.model("User", UserSchema);

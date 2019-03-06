@@ -20,11 +20,12 @@ const allUsers = (req, res) => {
 /** Sign up users/ register them */
 const signupUser = (req, res) => {
     const user = new User(req.body);
+    console.log("user:", user)
     user.save().then((user) => {
         var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
         res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
         res.redirect('/api/v1/users');
-    })
+    }).catch(err => res.json(err))
 }
 
 // LOGIN
@@ -92,6 +93,22 @@ const deleteUser = (req, res) => {
     }).catch((err) => res.send(err.message))
 }
 
+const search = (req, res) => {
+  let term = req.query.term
+  User.find({
+      $or: [
+        {'language': term},
+        {'name': term},
+      ]
+    })
+  .then((users) => {
+    return res.json({ users });
+  })
+  .catch((err) => {
+    return res.json(err)
+  })
+}
+
 module.exports = {
     loginUser,
     logoutUser,
@@ -99,5 +116,6 @@ module.exports = {
     signupUser,
     getUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    search
 }
