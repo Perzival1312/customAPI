@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   name:       {type: String, trim: true, required: true},
   email:      { type: String, uniquie: true, trim: true, required: true},
   password:   {type: String, required: true, select: false},
-  language: {type: String, required: true}
+  codeLanguage: {type: String, required: true, trim: true}
 }, { timestamps: true });
 
 // Users can be developers or just users

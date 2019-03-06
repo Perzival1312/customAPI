@@ -97,7 +97,7 @@ const search = (req, res) => {
   let term = req.query.term
   User.find({
       $or: [
-        {'language': term},
+        {'codeLanguage': term},
         {'name': term},
       ]
     })
