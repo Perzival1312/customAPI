@@ -19,12 +19,10 @@ const allUsers = (req, res) => {
 /** Sign up users/ register them */
 const signupUser = (req, res) => {
     const user = new User(req.body);
-    console.log(user)
     user.save().then((user) => {
         var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
         res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
         res.redirect('/api/v1/users');
-        // res.json({user})
     })
 }
 
