@@ -9,12 +9,12 @@ const Messages = {
 // INDEX - ALL
 /** show all users */
 const allUsers = () => {
-
+    res.json(User.find({}))
 }
 // CREATE / SIGNUP
 /** Sign up users/ register them */
 const signupUser = () => {
-
+    User.create(req.body)
 }
 
 // LOGIN
@@ -26,7 +26,7 @@ const signupUser = () => {
 // READ
 /** Get an individual user */
 const getUser = () => {
-
+    res.json(User.findById(req.params.id))
 }
 // UPDATE
 /** When a user wants to update their profile */
@@ -36,7 +36,7 @@ const updateUser = () => {
 // DELETE
 /** When a user wants to delete their profile */
 const deleteUser = () => {
-
+    User.findByIdAndDelete(req.params.id)
 }
 
 
