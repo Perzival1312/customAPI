@@ -39,9 +39,9 @@ const deleteUser = () => {
     User.findByIdAndDelete(req.params.id)
 }
 
-
-
 module.exports = {
+
+    
     allUsers,
     signupUser,
     getUser,
