@@ -3,10 +3,10 @@ const bcrypt = require("bcrypt")
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  name:       {type: String, trim: true, required: true},
-  email:      { type: String, uniquie: true, trim: true, required: true},
-  password:   {type: String, required: true, select: false},
-  codeLanguage: {type: String, required: true, trim: true}
+  name:         {type: String, trim: true, required: true},
+  email:        {type: String, uniquie: true, trim: true, required: true},
+  password:     {type: String, required: true, select: false},
+  codeLanguage: [{type: Schema.Types.ObjectId, ref: "Skill"}]
 }, { timestamps: true });
 
 // Users can be developers or just users
